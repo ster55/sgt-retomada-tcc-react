@@ -1,121 +1,97 @@
+
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+const integrantes = [
+  { nome: "Antônio Nunes de Souza",        rm: "RM 99080",  tipo: "dev", role: "Time de Desenvolvimento", iniciais: "AN", resp: ["Back-end", "Banco de dados"] },
+  { nome: "Deryk Henry dos Santos Silva",  rm: "RM 99760",  tipo: "dev", role: "Time de Desenvolvimento", iniciais: "DH", resp: ["Desenvolvimento", "Testes"] },
+  { nome: "Eloá Raquel Pereira Silva",     rm: "RM 95281",  tipo: "dev", role: "Time de Desenvolvimento", iniciais: "ER", resp: ["Mobile", "Documentação"] },
+  { nome: "Ester Beserra dos Santos",      rm: "RM 99877",  tipo: "dev", role: "Time de Desenvolvimento", iniciais: "EB", resp: ["Documentação", "Back-end"] },
+  { nome: "Ewerton Vagner da Silva",       rm: "RM 99750",  tipo: "po",  role: "Product Owner",           iniciais: "EV", resp: ["Gestão do produto", "UI/UX" ]},
+  { nome: "Stephany dos Santos Bandeira", rm: "RM 100423", tipo: "sm",  role: "Scrum Master",             iniciais: "SS", resp: ["Metodologia Scrum", "Front-end"] },
+]
+
+const roleLabel = { dev: 'Dev', po: 'Product Owner', sm: 'Scrum Master' }
+const cardClass  = { dev: '',   po: 'po-card',       sm: 'sm-card' }
+
+function Card({ pessoa, index, aberto, onClick }) {
+  const isOpen = aberto === index
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
+    <div
+      className={`card ${cardClass[pessoa.tipo]} ${isOpen ? 'active ' + pessoa.tipo : ''}`}
+      style={{ animationDelay: `${0.4 + index * 0.07}s` }}
+      onClick={onClick}
+    >
+      <div className="card-top">
+        <div className={`avatar ${pessoa.tipo}`}>{pessoa.iniciais}</div>
+        <div className="card-info">
+          <div className={`card-role ${pessoa.tipo}`}>{roleLabel[pessoa.tipo]}</div>
+          <div className="card-nome" title={pessoa.nome}>{pessoa.nome}</div>
+          <div className="card-rm">{pessoa.rm}</div>
         </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
+        <span className={`chevron ${isOpen ? 'open' : ''}`}>▾</span>
+      </div>
+
+      <div className={`card-expand ${isOpen ? 'open' : ''}`}>
+        <div className="expand-inner">
+          <div className="expand-row"><span className="expand-icon">🪪</span><span>{pessoa.role}</span></div>
+          <div className="expand-row"><span className="expand-icon">🏫</span><span>Turma INF2GM</span></div>
+          <div className="expand-row expand-tags">
+            <span className="expand-icon">🔧</span>
+            {pessoa.resp.map((r, i) => (
+              <span key={i} className={`expand-tag ${pessoa.tipo}`}>{r}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function App() {
+  const [aberto, setAberto] = useState(null)
+
+  return (
+    <div className="page">
+      <div className="hero">
+        <div className="hero-bg" />
+        <div className="turma-badge">🏫 Turma INF2GM</div>
+        <span className="hero-icon">📋</span>
+        <h1 className="titulo">SGT — Sistema de Gerenciamento de Tarefas</h1>
+        <p className="subtitulo">Trabalho de Conclusão de Curso · 2025</p>
+        <div className="tema-box">
+          <p className="tema-label">Tema do projeto</p>
+          <p className="tema-text">
+            Plataforma integrada de gestão acadêmica para estudantes, com controle de tarefas,
+            prazos, desempenho e comunicação em tempo real entre web e mobile.
           </p>
         </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+        <div className="ods-badge">🌱 Alinhado à ODS 4 — Educação de Qualidade</div>
+      </div>
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
+      <div className="section">
+        <div className="section-header">
+          <h2 className="section-title">Integrantes do projeto</h2>
+          <p className="section-sub">Clique em um integrante para ver mais informações</p>
         </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
+        <div className="grid">
+          {integrantes.map((pessoa, i) => (
+            <Card
+              key={i}
+              pessoa={pessoa}
+              index={i}
+              aberto={aberto}
+              onClick={() => setAberto(prev => prev === i ? null : i)}
+            />
+          ))}
         </div>
-      </section>
+      </div>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+      <div className="footer">
+        <p className="footer-text">Instituto Tecnológico de Brasília · Turma INF2GM · 2026</p>
+      </div>
+    </div>
   )
 }
 
