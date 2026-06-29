@@ -35,8 +35,8 @@ function Card({ pessoa, index, aberto, onClick }) {
 
       <div className={`card-expand ${isOpen ? 'open' : ''}`}>
         <div className="expand-inner">
-          <div className="expand-row"><span className="expand-icon">🪪</span><span>{pessoa.role}</span></div>
-          <div className="expand-row"><span className="expand-icon">🏫</span><span>Turma INF2GM</span></div>
+          <div className="expand-row"><span className="expand-icon"></span><span>{pessoa.role}</span></div>
+          <div className="expand-row"><span className="expand-icon"></span><span>Turma INF2GM</span></div>
           <div className="expand-row expand-tags">
             <span className="expand-icon">🔧</span>
             {pessoa.resp.map((r, i) => (
@@ -56,8 +56,8 @@ function App() {
     <div className="page">
       <div className="hero">
         <div className="hero-bg" />
-        <div className="turma-badge">🏫 Turma INF2GM</div>
-        <span className="hero-icon">📋</span>
+        <div className="turma-badge"> Turma INF2GM</div>
+        <span className="hero-icon"></span>
         <h1 className="titulo">SGT — Sistema de Gerenciamento de Tarefas</h1>
         <p className="subtitulo">Trabalho de Conclusão de Curso · 2025</p>
         <div className="tema-box">
@@ -67,7 +67,7 @@ function App() {
             prazos, desempenho e comunicação em tempo real entre web e mobile.
           </p>
         </div>
-        <div className="ods-badge">🌱 Alinhado à ODS 4 — Educação de Qualidade</div>
+        <div className="ods-badge"> Alinhado à ODS 4 — Educação de Qualidade</div>
       </div>
 
       <div className="section">
@@ -89,7 +89,7 @@ function App() {
       </div>
 
       <div className="footer">
-        <p className="footer-text">Instituto Tecnológico de Brasília · Turma INF2GM · 2026</p>
+        <p className="footer-text">ITB Brasílio Flores de Azevedo · Turma INF2GM · 2026</p>
       </div>
     </div>
   )
