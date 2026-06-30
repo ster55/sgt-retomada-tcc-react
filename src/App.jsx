@@ -5,9 +5,9 @@ import './App.css'
 const integrantes = [
   { nome: "Antônio Nunes de Souza",        rm: "RM 99080",  tipo: "dev", role: "Time de Desenvolvimento", iniciais: "AN", resp: ["Back-end", "Banco de dados"] },
   { nome: "Deryk Henry dos Santos Silva",  rm: "RM 99760",  tipo: "dev", role: "Time de Desenvolvimento", iniciais: "DH", resp: ["Desenvolvimento", "Testes"] },
-  { nome: "Eloá Raquel Pereira Silva",     rm: "RM 95281",  tipo: "dev", role: "Time de Desenvolvimento", iniciais: "ER", resp: ["Mobile", "Documentação"] },
-  { nome: "Ester Beserra dos Santos",      rm: "RM 99877",  tipo: "dev", role: "Time de Desenvolvimento", iniciais: "EB", resp: ["Documentação", "Back-end"] },
-  { nome: "Ewerton Vagner da Silva",       rm: "RM 99750",  tipo: "po",  role: "Product Owner",           iniciais: "EV", resp: ["Gestão do produto", "UI/UX" ]},
+  { nome: "Eloá Raquel Pereira Silva",     rm: "RM 95281",  tipo: "dev", role: "Time de Desenvolvimento", iniciais: "ER", resp: ["UI/UX", "Documentação"] },
+  { nome: "Ester Beserra dos Santos",      rm: "RM 99877",  tipo: "dev", role: "Time de Desenvolvimento", iniciais: "EB", resp: ["Banco de dados", "Back-end"] },
+  { nome: "Ewerton Vagner da Silva",       rm: "RM 99750",  tipo: "po",  role: "Product Owner",           iniciais: "EV", resp: ["Gestão do projeto", "Mobile" ]},
   { nome: "Stephany dos Santos Bandeira", rm: "RM 100423", tipo: "sm",  role: "Scrum Master",             iniciais: "SS", resp: ["Metodologia Scrum", "Front-end"] },
 ]
 
